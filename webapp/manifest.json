@@ -1,0 +1,170 @@
+{
+  "_version": "1.48.0",
+  "sap.app": {
+    "id": "br.com.dfp.databinding",
+    "type": "application",
+    "i18n": "i18n/i18n.properties",
+    "applicationVersion": {
+      "version": "0.0.1"
+    },
+    "title": "{{appTitle}}",
+    "description": "{{appDescription}}",
+    "resources": "resources.json",
+    "sourceTemplate": {
+      "id": "@sap/generator-fiori:basic",
+      "version": "1.8.3",
+      "toolsId": "86241b94-dcc4-4455-ac44-5eee35367170"
+    },
+    "dataSources": {
+      "mainService": {
+        "uri": "/sap/opu/odata/IWBEP/gwsample_basic/",
+        "type": "OData",
+        "settings": {
+          "annotations": [],
+          "localUri": "localService/metadata.xml",
+          "odataVersion": "2.0"
+        }
+      }
+    }
+  },
+  "sap.ui": {
+    "technology": "UI5",
+    "icons": {
+      "icon": "",
+      "favIcon": "",
+      "phone": "",
+      "phone@2": "",
+      "tablet": "",
+      "tablet@2": ""
+    },
+    "deviceTypes": {
+      "desktop": true,
+      "tablet": true,
+      "phone": true
+    }
+  },
+  "sap.ui5": {
+    "flexEnabled": true,
+    "dependencies": {
+      "minUI5Version": "1.109.3",
+      "libs": {
+        "sap.m": {},
+        "sap.ui.core": {},
+        "sap.f": {},
+        "sap.suite.ui.generic.template": {},
+        "sap.ui.comp": {},
+        "sap.ui.generic.app": {},
+        "sap.ui.table": {},
+        "sap.ushell": {}
+      }
+    },
+    "contentDensities": {
+      "compact": true,
+      "cozy": true
+    },
+    "models": {
+      "i18n": {
+        "type": "sap.ui.model.resource.ResourceModel",
+        "settings": {
+          "bundleName": "br.com.dfp.databinding.i18n.i18n"
+        }
+      },
+      "": {
+        "dataSource": "mainService",
+        "preload": true,
+        "settings": {}
+      }
+    },
+    "resources": {
+      "css": [
+        {
+          "uri": "css/style.css"
+        }
+      ]
+    },
+    "routing": {
+      "config": {
+        "routerClass": "sap.f.routing.Router",
+        "viewType": "XML",
+        "async": true,
+        "viewPath": "br.com.dfp.databinding.view",
+        "controlId": "flexibleColumnLayout"
+      },
+      "routes": [
+        {
+          "name": "RouteDatabinding",
+          "pattern": "RouteDatabinding",
+          "target": [
+            "TargetDatabinding"
+          ]
+        },
+        {
+          "pattern": ":layout:",
+          "name": "master",
+          "target": [
+            "master",
+            "detail"
+          ]
+        },
+        {
+          "pattern": "detail/{salesorder}/{layout}",
+          "name": "detail",
+          "target": [
+            "master",
+            "detail"
+          ]
+        },
+        {
+					"pattern": "detail/{salesorder}/detailDetail/{itemposition}/{layout}",
+					"name": "detailDetail",
+					"target": [
+						"master",
+						"detail",
+						"detailDetail"
+					]
+				},
+        {
+					"pattern": "processFlow/{salesorder}/{layout}",
+					"name": "processFlow",
+					"target": "processFlow",
+					"layout": "EndColumnFullScreen"
+				}
+      ],
+      "targets": {
+        "TargetDatabinding": {
+          "viewType": "XML",
+          "transition": "slide",
+          "clearControlAggregation": false,
+          "viewId": "Databinding",
+          "viewName": "Databinding"
+        },
+        "master": {
+          "viewId": "Databinding",
+					"viewName": "Databinding",
+					"controlAggregation": "beginColumnPages"
+				},
+				"detail": {
+          "viewId": "Detalhes",
+					"viewName": "Detalhes",
+					"controlAggregation": "midColumnPages"
+				},
+				"detailDetail": {
+					"viewId": "DetalhesDetalhes",
+					"viewName": "DetalhesDetalhes",
+					"controlAggregation": "endColumnPages"
+				},
+        "processFlow": {
+					"viewId": "ProcessFlow",
+					"viewName": "Process",
+					"controlAggregation": "endColumnPages"
+				}
+      }
+    },
+    "rootView": {
+      "viewName": "br.com.dfp.databinding.view.App",
+      "type": "XML",
+      "async": false,
+      "id": "App"
+    }
+  }
+}

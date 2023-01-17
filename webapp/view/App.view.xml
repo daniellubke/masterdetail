@@ -1,0 +1,20 @@
+<mvc:View controllerName="br.com.dfp.databinding.controller.App" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m" xmlns:f="sap.f">
+    <!-- <App id="app">
+    </App> -->
+    <Shell id="_IDGenShell1">
+        <!-- <f:FlexibleColumnLayout id="flexibleColumnLayout" backgroundDesign="Solid">
+            <f:beginColumnPages>
+                <mvc:XMLView id="beginView" viewName="br.com.dfp.databinding.view.Databinding" />
+            </f:beginColumnPages>
+            <f:midColumnPages>
+                <mvc:XMLView id="detailView" viewName="br.com.dfp.databinding.view.Detalhes" />
+            </f:midColumnPages>
+            <f:endColumnPages>
+                <mvc:XMLView id="detaildetailView" viewName="br.com.dfp.databinding.view.DetalhesDetalhes" />
+            </f:endColumnPages>
+        </f:FlexibleColumnLayout> -->
+
+        <f:FlexibleColumnLayout id="flexibleColumnLayout" stateChange=".onStateChanged" backgroundDesign="Solid" layout="{Layout>/layout}" />
+        
+    </Shell>
+</mvc:View>

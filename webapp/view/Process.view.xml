@@ -1,0 +1,23 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:commons="sap.suite.ui.commons" controllerName="br.com.dfp.databinding.controller.Process" displayBlock="true">
+    <Page id="pageDetail" showHeader="false" title="{i18n>title}">
+        <content>
+            <ObjectHeader title="Process Flow: SO {SalesOrderID}" number="{GrossAmount}" condensed="false" numberUnit="{CurrencyCode}" id="__header1" icon="sap-icon://workflow-tasks">
+                <attributes>
+                    <ObjectAttribute id="_IDGenObjectAttribute1" text="Customer: {CustomerID}"/>
+                </attributes>
+            </ObjectHeader>
+
+            <Panel id="_IDGenPanel1">
+                <commons:ProcessFlow id="processflow1" scrollable="false" foldedCorners="true" nodePress="onNodePress" nodes="{MDL_ProcessFlow>/nodes}" lanes="{MDL_ProcessFlow>/lanes}"> 
+                    <commons:nodes>
+                        <commons:ProcessFlowNode id="_IDGenProcessFlowNode1" laneId="{MDL_ProcessFlow>lane}" nodeId="{MDL_ProcessFlow>id}" title="{MDL_ProcessFlow>title}" titleAbbreviation="{MDL_ProcessFlow>titleAbbreviation}" children="{MDL_ProcessFlow>children}" state="{MDL_ProcessFlow>state}" stateText="{MDL_ProcessFlow>stateText}" texts="{MDL_ProcessFlow>texts}" highlighted="{MDL_ProcessFlow>highlighted}" focused="{MDL_ProcessFlow>focused}" />
+                    </commons:nodes>
+                    <commons:lanes>
+                        <commons:ProcessFlowLaneHeader id="_IDGenProcessFlowLaneHeader1" laneId="{MDL_ProcessFlow>id}" iconSrc="{MDL_ProcessFlow>icon}" text="{MDL_ProcessFlow>label}" position="{MDL_ProcessFlow>position}" />
+                    </commons:lanes>
+                </commons:ProcessFlow>
+                
+            </Panel>
+        </content>
+    </Page>
+</mvc:View>

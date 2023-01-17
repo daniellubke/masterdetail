@@ -1,0 +1,26 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="br.com.dfp.databinding.controller.DetalhesDetalhes" displayBlock="true">
+    <Page id="pageDetail" showHeader="false" title="{i18n>title}">
+        <content>
+            <ObjectHeader title="{ProductID}" id="__header1" icon="sap-icon://product">
+                <attributes>
+                    <ObjectAttribute id="_IDGenObjectAttribute1" title="Sales Order ID" text="{Model_Header>/SalesOrderID}" />
+                    <ObjectAttribute id="_IDGenObjectAttribute2" title="Item Position" text="{Model_Header>/ItemPosition}" />
+                </attributes>
+            </ObjectHeader>
+            <sap.ui.layout.form:SimpleForm editable="true" layout="ResponsiveGridLayout" xmlns:sap.ui.layout.form="sap.ui.layout.form" xmlns:sap.ui.core="sap.ui.core" id="form0">
+                <sap.ui.layout.form:content>
+                    <sap.ui.core:Title text="Product Detail" id="title0" />
+
+                    <Label id="_IDGenLabel2" text="Category" />
+                    <Text id="_IDGenText2" width="100%" text="{Category}" />
+
+                    <Label id="_IDGenLabel3" text="Name" />
+                    <Text id="_IDGenText3" width="100%" text="{Name}" />
+
+                    <Label id="_IDGenLabel4" text="Description" />
+                    <Text id="_IDGenText4" width="100%" text="{Description}" wrapping="true" />
+                </sap.ui.layout.form:content>
+            </sap.ui.layout.form:SimpleForm>
+        </content>
+    </Page>
+</mvc:View>

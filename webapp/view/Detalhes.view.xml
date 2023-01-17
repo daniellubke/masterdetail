@@ -1,0 +1,98 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:tnt="sap.tnt" controllerName="br.com.dfp.databinding.controller.Detalhes" displayBlock="true">
+    <Page id="pageDetail" showHeader="false" title="{i18n>title}">
+        <content>
+            <ObjectHeader title="{SalesOrderID}" number="{GrossAmount}" numberUnit="{CurrencyCode}" id="__header1" icon="sap-icon://sales-order">
+                <statuses>
+                    <!-- <ObjectStatus id="_IDGenObjectStatus1" text="{LifecycleStatusDescription}" state="Success"/> -->
+                    <ObjectStatus id="_IDGenObjectStatus3" title="Status" text="{ path:'LifecycleStatus', formatter:'.objFormatter.statusProduto'}" state="{ path:'LifecycleStatus', formatter:'.objFormatter.stateProduto'}" />
+                    <ObjectStatus id="_IDGenObjectStatus2" text="{DeliveryStatusDescription}" state="Warning" />
+                </statuses>
+                <attributes>
+                    <ObjectAttribute id="_IDGenObjectAttribute1" text="{CustomerID}" />
+                    <ObjectAttribute id="_IDGenObjectAttribute2" text="{CustomerName}" />
+                    <ObjectAttribute id="_IDGenObjectAttribute3" text="{Note}" />
+                </attributes>
+            </ObjectHeader>
+
+            <FlexBox id="_IDGenFlexBox1" height="55px" alignItems="Start" justifyContent="End">
+                <Button xmlns="sap.m" text="Sales Order Process" id="button0" icon="sap-icon://workflow-tasks" press="handleProcessPress" type="Emphasized" />
+            </FlexBox>
+
+            <Table id="_IDGenTable1" noDataText="Drop column list items here and columns in the area above" items="{ToLineItems}">
+                <items>
+                    <ColumnListItem type="Active" id="item0" press="funcSelectItem">
+                        <cells>
+                            <Text text="{ItemPosition}" id="text0" />
+                            <Text text="{ProductID}" id="text1" />
+                            <!-- <Text text="{Quantity} "  id="text2"/> -->
+                            <ObjectStatus
+                                id="_IDGenObjectStatus4"
+                                class="sapUiSmallMarginBottom"
+                                text="{ parts: [
+                                            {path: 'Quantity'}
+                                        ],
+                                        formatter:'.objFormatter.availableStock'
+                                    }"
+                                icon="{ parts: [
+                                            {path: 'Quantity'}
+                                        ],
+                                        formatter:'.objFormatter.iconStock'
+                                    }"
+                                state="{ parts: [
+                                            {path: 'Quantity'}
+                                        ],
+                                        formatter:'.objFormatter.stateStock'
+                                    }"
+                            />
+
+                            <ObjectNumber xmlns="sap.m" number="{GrossAmount}" unit="{CurrencyCode}" id="number0"/>
+
+                            <!-- se der tempo adicionar format inline abaixo -->
+                            <!-- <ObjectNumber id="_IDGenObjectNumber2" xmlns="sap.m" number="{ parts:[ {path:'GrossAmount'},{path:'Currencycode'} ], type:'sap.ui.model.type.Currency', formatOptions:{showMeasure: false} }" unit="{Currencycode}" state="Success" /> -->
+
+                            <ObjectNumber
+                                id="_IDGenObjectNumber1"
+                                xmlns="sap.m"
+                                number="{ parts: [
+                                            {path: 'GrossAmount'},
+                                            {path: 'TaxAmount'},
+                                            {path: 'CurrencyCode'}
+                                        ],
+                                        formatter:'.objFormatter.calcNetAmount'
+                                    }"
+                                unit="{CurrencyCode}"
+                            />
+                        </cells>
+                    </ColumnListItem>
+                </items>
+                <columns>
+                    <Column id="column0">
+                        <header>
+                            <Label text="Item Position" id="label0" />
+                        </header>
+                    </Column>
+                    <Column id="column1">
+                        <header>
+                            <Label text="Product ID" id="label1" />
+                        </header>
+                    </Column>
+                    <Column id="column2">
+                        <header>
+                            <Label text="Quantity" id="label2" />
+                        </header>
+                    </Column>
+                    <Column id="_IDGenColumn1">
+                        <header>
+                            <Label id="_IDGenLabel3" text="Gross Amount" />
+                        </header>
+                    </Column>
+                    <Column id="_IDGenColumn2">
+                        <header>
+                            <Label id="_IDGenLabel4" text="Net Amount" />
+                        </header>
+                    </Column>
+                </columns>
+            </Table>
+        </content>
+    </Page>
+</mvc:View>

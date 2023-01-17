@@ -1,0 +1,37 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" controllerName="br.com.dfp.databinding.controller.Databinding" displayBlock="true">
+    <Page id="page" title="{i18n>title}">
+        <content>
+            <!-- Criar List com CustomListItem -->
+            <List noDataText="Drop list items here" id="list0" items="{/SalesOrderSet}">
+                <items>
+                    <CustomListItem type="Navigation" id="item1" press="funcSelectItem">
+                        <content>
+                            <VBox width="100%" direction="Column" id="vbox0" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+                                <items>
+                                    <HBox width="100%" id="hbox0">
+                                        <items>
+                                            <sap.ui.core:Icon xmlns:sap.ui.core="sap.ui.core" src="sap-icon://sales-order" size="2em" id="icon0" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom" />
+                                            <VBox width="100%" direction="Column" id="vbox1" class="sapUiSmallMarginBegin sapUiSmallMarginTopBottom">
+                                                <Title id="_IDGenTitle1" text="Ordem: {SalesOrderID}" class="sapUiTinyMarginBottom" />
+                                                <Label id="_IDGenLabel1" text="Customer: {CustomerID}" />
+                                                <Label id="_IDGenLabel2" text="Note: {Note}" />
+                                                <ObjectStatus id="_IDGenObjectStatus2" title="Status" text="{ path:'LifecycleStatus', formatter:'.statusProduto'}" state="{ path:'LifecycleStatus', formatter:'.stateProduto'}"/>
+                                            </VBox>
+                                        </items>
+                                    </HBox>
+                                </items>
+                            </VBox>
+                        </content>
+                    </CustomListItem>
+                </items>
+                <headerToolbar>
+                    <Toolbar width="100%" id="toolbar1">
+                        <content>
+                            <SearchField xmlns="sap.m" placeholder="Search for ..." id="field0" />
+                        </content>
+                    </Toolbar>
+                </headerToolbar>
+            </List>
+        </content>
+    </Page>
+</mvc:View>
